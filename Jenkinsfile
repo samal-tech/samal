@@ -1,8 +1,5 @@
 pipeline {
 	agent any 
-	tools {
-		MAVEN 'M3'
-	}
 	stages {
 	 	stage('compile') {
 			steps {
@@ -10,8 +7,8 @@ pipeline {
 				git url:'https://github.com/samal-tech/DevOpsClassCodes'
 				sh label:'',script: 'mvn compile'
 			}	
-	    }
-        stage ('code-Analysis') {
+	    	}
+        	stage ('code-Analysis') {
 			steps {
 				echo "test code"
 				sh label:'',script: 'mvn -P metrics pmd:pmd'
