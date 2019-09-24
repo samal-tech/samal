@@ -5,13 +5,17 @@ pipeline {
 			steps {
 				echo "build compile"
 				git url:'https://github.com/samal-tech/DevOpsClassCodes'
-				sh label:'',script: 'mvn compile'
+				withMaven(maven : 'MAVEN') {
+					sh label:'',script: 'mvn compile'
+				}
 			}	
 	    	}
         	stage ('code-Analysis') {
 			steps {
 				echo "test code"
-				sh label:'',script: 'mvn -P metrics pmd:pmd'
+				withMaven(maven : 'MAVEN') {
+					sh label:'',script: 'mvn -P metrics pmd:pmd'
+				}
 			}
 			post {
 				success {
@@ -22,7 +26,9 @@ pipeline {
 		stage ('unit-test') {
 			steps {
 				echo "unit test"
-				sh label:'',script: 'mvn test'
+				withMaven(maven : 'MAVEN') {
+					sh label:'',script: 'mvn test'
+				}
 			}
 			post {
 				success {
@@ -33,7 +39,9 @@ pipeline {
 		stage ('code-covarage') {
 			steps {
 				echo "code covarage"
-				sh label:'',script: 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+				withMaven(maven : 'MAVEN') {
+					sh label:'',script: 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+				}
 			}
 			post {
 				success {
@@ -44,7 +52,9 @@ pipeline {
 		stage ('packaging') {
 			steps {
 				echo "package creation"
-				sh label:'',script: 'mvn package'
+				withMaven(maven : 'MAVEN') {
+					sh label:'',script: 'mvn package'
+				}
 			}
 		}
 	}
