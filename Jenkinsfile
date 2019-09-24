@@ -5,7 +5,7 @@ pipeline {
 			steps {
 				echo "build compile"
 				git url:'https://github.com/samal-tech/DevOpsClassCodes'
-				sh label:'',script:'mvn compile’
+				sh label:'',script:'mvn compile'
 			}	
 	    }
         stage (‘code Analysis’) {
