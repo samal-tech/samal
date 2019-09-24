@@ -8,7 +8,7 @@ pipeline {
 				sh label:'',script:'mvn compile'
 			}	
 	    }
-        stage (‘code Analysis’) {
+        stage (‘code-Analysis’) {
 			steps {
 				echo "test code"
 				sh label:'',script:'mvn -P metrics pmd:pmd'
@@ -19,7 +19,7 @@ pipeline {
 				}
 			}
 		}
-		stage ('unit test') {
+		stage ('unit-test') {
 			steps {
 				echo "unit test"
 				sh label:'',script:'mvn test'
@@ -30,7 +30,7 @@ pipeline {
 				}
 			}
 		}
-		stage ('code covarage') {
+		stage ('code-covarage') {
 			steps {
 				echo "code covarage"
 				sh label:'',script:'mvn cobertura:cobertura -Dcobertura.report.format=xml'
