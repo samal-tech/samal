@@ -1,14 +1,14 @@
 pipeline {
 	agent any 
 	stages {
-	 	stage(‘compile’) {
+	 	stage('compile') {
 			steps {
 				echo "build compile"
 				git url:'https://github.com/samal-tech/DevOpsClassCodes'
 				sh label:'',script:'mvn compile'
 			}	
 	    }
-        stage (‘code-Analysis’) {
+        stage ('code-Analysis') {
 			steps {
 				echo "test code"
 				sh label:'',script:'mvn -P metrics pmd:pmd'
