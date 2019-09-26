@@ -27,7 +27,7 @@ pipeline {
 				echo "unit test started"
 				sh 'mvn test'
 			}
-			post (
+			post {
 				success {
 					junit 'target/surefire-reports/*.xml'
 				}
