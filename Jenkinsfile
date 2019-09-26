@@ -1,8 +1,8 @@
 pipeline {
 	agent any
 	stages {
-		stage {
-			steps('my-step') {
+		stage('my-stage') {
+			steps {
 				echo "my step started"
 			}
 		}
