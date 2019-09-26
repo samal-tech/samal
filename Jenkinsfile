@@ -1,9 +1,11 @@
 pipeline {
 	agent any
 	stages {
-		stage('my-stage') {
+		stage('compile') {
 			steps {
-				echo "my step started"
+				echo "compile started"
+				git url : https://github.com/samal-tech/DevOpsClassCodes
+				sh 'mvn compile'
 			}
 		}
 	}
